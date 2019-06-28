@@ -184,7 +184,7 @@ endif;
 
 			var _carregar = function () {
 				var valorGrupo = <?="'$discipulo->grupo'"?>;
-				var valorLider = <?=$discipulo->lider??"-1"?>;
+				var valorLider = <?=empty($discipulo->lider)?"-1":$discipulo->lider?>;
 				console.log(<?=$discipulo->lider?>)
 				_carregarSelectLideres();
 

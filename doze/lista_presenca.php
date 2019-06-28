@@ -9,7 +9,7 @@ $termo = (isset($_GET['termo'])) ? $_GET['termo'] : '';
 if (empty($termo)):
 
 	$conexao = conexao::getInstance();
-	$sql = 'SELECT idmembro, nome,lider FROM cadmembro';
+	$sql = 'SELECT cadmembroLider.nome as nomelider, cadmembro.idmembro, cadmembro.nome, cadmembro.lider FROM cadmembro left join cadmembro cadmembroLider on cadmembroLider.idmembro = cadmembro.lider';
 	$stm = $conexao->prepare($sql);
 	$stm->execute();
 	$presencas = $stm->fetchAll(PDO::FETCH_OBJ);
@@ -18,7 +18,7 @@ else:
 
 	// Executa uma consulta baseada no termo de pesquisa passado como parâmetro
 	$conexao = conexao::getInstance();
-	$sql = "SELECT idmembro, nome, lider FROM cadmembro WHERE nome LIKE :nome OR lider LIKE :lider";
+	$sql = "SELECT cadmembroLider.nome as nomelider, cadmembro.idmembro, cadmembro.nome, cadmembro.lider FROM cadmembro left join cadmembro cadmembroLider on cadmembroLider.idmembro = cadmembro.lider WHERE nome LIKE :nome OR lider LIKE :lider";
 	$stm = $conexao->prepare($sql);
 	$stm->bindValue(':nome', '%'.$termo.'%');
 	$stm->bindValue(':lider', '%'.$termo.'%');
@@ -74,7 +74,8 @@ endif;
 						<!-- Tabela de Discípulos -->
 						<table class="table table-striped" id="tabela-discipulos">
 							<tr class='active'>
-								<th>Nome</th>							
+								<th>Nome</th>
+								<th>Lider</th>
 								<th>Data</th>
 								<th>Presença</th>							
 							</tr>
@@ -83,6 +84,9 @@ endif;
 									<td>
 										<input type="Text" disabled='true' class="form-control" id="nome"  name="nome" value="<?=$presenca->nome?>">
 										<input type="hidden" id="id"  name="id" value="<?=$presenca->idmembro?>">
+									</td>
+									<td>
+										<input type="Text" disabled='true' class="form-control" value="<?=empty($presenca->nomelider)? '----' : $presenca->nomelider?>">										
 									</td>
 									<td>
 										<input type="date" name="data">
