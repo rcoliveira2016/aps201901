@@ -1,0 +1,190 @@
+@font-face {
+	font-family: 'OpenSans';
+	src: url("../fonts/Open_Sans/OpenSans-Regular.ttf");
+	font-size: 1em;
+}
+@font-face {
+	font-family: 'OpenSans-Light';
+	src: url("../fonts/Open_Sans/OpenSans-Light.ttf");
+	font-size: 1em;
+}
+header {
+	width: 100%;
+    height: 150px;
+    background-color: rgba(94, 41, 154, .8);
+    z-index: 1;
+    position: relative;
+}
+header .header-black{
+	background-color: #000;
+	height: 50px;
+}
+header .header-black form {
+	color: #fff;
+	margin-top: 10px;
+	margin-left: 40px;
+	
+
+}
+header .header-black p{
+    color: #fff;
+    width: 412px;
+    margin-left: 800px;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+#menu {
+	margin: 38px;
+	margin-left: 535px;
+}
+.btn-primary {
+    color: #000;
+    background-color: #fff;
+    border-color: #2e6da4;
+}
+#menu li {
+	display: inline-block;
+	font-family: "OpenSans";
+	
+}
+#menu li a {
+	color: #FFF;
+	font-size: 14px;
+	padding: 10px 25px;
+	font-weight: bold;
+
+}
+#banner {
+	width: 100%;
+	height: 728px;
+	position: relative;
+	background: url("../img/cruz.jpg") no-repeat;
+	background-position: 0px -100px;
+	top: -130px;
+	
+}
+#banner h1 {
+	color: #5E299A;
+	top: 350px;
+	position: relative;
+	font-size: 62px;
+	text-shadow:2px 2px 2px rgba(0, 0, 0, .45);
+	font-family: 'OpenSans';
+	margin-left: 530px;
+	font-weight: bold;
+}
+#banner h1 small {
+	font-size: 92px;
+	display: block;
+	color: #5E299A;
+	font-family: 'OpenSans-Light';
+	
+}
+footer {
+	margin-top: -230px;
+}
+footer .row {
+	width: 100%;
+	margin-left: 0;
+}
+footer .row p {
+	line-height: 55px;
+    margin-top: 0px;
+}
+footer .row-cinza-claro {
+	height: 200px;
+	background-color: #171F26;
+}
+footer .row-cinza-escuro {
+	height: 60px;
+	background-color: #11171D;
+	border-top: #242D37 1px solid;
+}
+footer .text-roxo {
+	color: #666;
+	font-family: 'OpenSans';
+	font-weight: bold;
+	font-size: 14px;
+}
+footer .logotipo {
+	margin-top: 120px;
+}
+footer .col-popular-post,
+footer .col-links,
+footer .col-get-in-touch {
+	margin-top: 110px;
+	margin-left: 110px;
+}
+footer .row-cols h4 {
+	font-family: 'OpenSans';
+	font-size: 12px;
+	color: #FFF;
+	padding-bottom: 5px;
+	border-bottom: #242D37 1px solid;
+}
+footer .row-cols h5 {
+	color: #666;
+	font-family: Arial;
+	font-size: 10px;
+	margin-bottom: 0;
+}
+footer .row-cols time {
+	color: #FDE092;
+	font-family: Arial;
+	font-size: 14px;
+}
+footer .col-links a {
+	color: #666;
+	font-family: Arial;
+	font-size: 14px;
+}
+footer .col-links .fa {
+	margin: 0 6px;
+}
+footer .col-get-in-touch address {
+	color:#666;
+	font-family: Arial;
+	font-size: 14px;
+	margin-bottom: 6px;
+}
+footer .col-get-in-touch address span {
+	display: inline-block;
+}
+footer .col-get-in-touch address i {
+	position: relative;
+	top: -14px;
+}
+footer .col-get-in-touch i {
+	color: #9B9B9B;
+	font-size: 20px;
+	margin: 0 6px;
+
+}
+footer .col-get-in-touch a {
+	color: #666;
+}
+footer .col-get-in-touch p {
+	line-height: 20px;
+}
+footer .list-socials {
+	margin-top: 4px;
+}
+footer .list-socials li {
+	display: inline-block;
+	margin-right: 8px;
+}
+footer .list-socials a {
+	display: block;
+	border: #9B9B9B 1px solid;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	border-radius: 14px;
+	text-align: center;
+}
+footer .list-socials i {
+	font-size: 16px;
+	margin: 7px auto;
+}
