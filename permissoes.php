@@ -1,7 +1,7 @@
 <?php 
 if (session_status() == PHP_SESSION_NONE) session_start();
 
-if(!isset($_SESSION['niveisacesso']) && !empty($_SESSION['niveisacesso']))
+if(!isset($_SESSION['niveisacesso']))
     header("location: ../index.php");
 
 $doze = 'Doze';

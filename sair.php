@@ -5,6 +5,7 @@
 		$_SESSION['usuarioId'],
 		$_SESSION['usuarioNome'],
 		$_SESSION['usuarioNiveisAcessoId'],
+		$_SESSION['niveisacesso'],
 		$_SESSION['usuarioEmail'],
 		$_SESSION['usuarioSenha']
 	);
