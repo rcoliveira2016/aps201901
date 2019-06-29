@@ -19,7 +19,7 @@ else:
 
 	// Executa uma consulta baseada no termo de pesquisa passado como parâmetro
 	$conexao = conexao::getInstance();
-	$sql = "SELECT cadmembroLider.nome as nomelider, cadmembro.idmembro, cadmembro.nome, cadmembro.lider FROM cadmembro left join cadmembro cadmembroLider on cadmembroLider.idmembro = cadmembro.lider WHERE nome LIKE :nome OR lider LIKE :lider";
+	$sql = "SELECT cadmembroLider.nome as nomelider, cadmembro.idmembro, cadmembro.nome, cadmembro.lider FROM cadmembro left join cadmembro cadmembroLider on cadmembroLider.idmembro = cadmembro.lider WHERE cadmembro.nome LIKE :nome OR cadmembroLider.nome LIKE :lider";
 	$stm = $conexao->prepare($sql);
 	$stm->bindValue(':nome', '%'.$termo.'%');
 	$stm->bindValue(':lider', '%'.$termo.'%');
