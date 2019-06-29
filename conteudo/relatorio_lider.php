@@ -35,35 +35,37 @@
 
 			<!-- Formulário de Pesquisa -->
 			<div class="row">
-				<div class="form-inline">
-                    <div class="form-group">
-                        <label>Lider</label>
-                        <select class="form-control" name="lider" id="lider"></select>
-                    </div>
-                    <div class="form-group">
-                        <label>Data</label>
-                        <input type="date" class="form-control" id="data" maxlength="10" name="data">
-                    </div>
-                    <button type="submit" class="btn btn-primary pesquisar">Pesquisar</button>
-                </div>
+				<div class="col-md-12">
+					<div class="form-inline">
+						<div class="form-group">
+							<label>Lider</label>
+							<select class="form-control" name="lider" id="lider"></select>
+						</div>
+						<div class="form-group">
+							<label>Data</label>
+							<input type="date" class="form-control" id="data" maxlength="10" name="data">
+						</div>
+						<button type="submit" class="btn btn-primary pesquisar">Pesquisar</button>
+					</div>
+				</div>
 			</div>
 
-			<!-- Link para página de cadastro -->
-			
-			<div class='clearfix'></div>
-			<div class="row">
-                <table class="table table-striped" id="tabela-lider">
-                    <thead>
-                        <tr class='active'>
-                            <th>Nome</th>							
-                            <th>Data</th>
-                            <th>Presença</th>							
-                        </tr>
-                    </thead>
-                    <tbody>
+			<!-- Link para página de cadastro -->			
+			<div class="row m-t-lg">
+				<div class="col-md-12">
+					<table class="table table-striped" id="tabela-lider">
+						<thead>
+							<tr class='active'>
+								<th>Nome</th>							
+								<th>Data</th>
+								<th>Presença</th>							
+							</tr>
+						</thead>
+						<tbody>
 
-                    </tbody>
-                </table>
+						</tbody>
+					</table>
+				<div>
 			<div>
 		
 		</fieldset>

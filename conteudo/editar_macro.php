@@ -28,6 +28,7 @@ endif;
 	<title>Edição de Macro</title>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/custom.css">
+	<link href="../css/sistema.css" rel="stylesheet">
 </head>
 <body>
 	<?php require_once('../templates/header.php') ?>

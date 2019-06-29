@@ -9,9 +9,16 @@ $senha = $_POST['senha'];
 $senhacrip = md5($senha);
 $niveisacesso = $_POST['niveisacesso'];
 
-
-$sql = "INSERT INTO cadusuario (nomeCompleto, email, senha, niveisacesso ) 
-		VALUES ('$nomeCompleto','$email', '$senhacrip', '$niveisacesso')";
+if(isset($_POST['id'])){
+	$id = $_POST['id'];
+	$alterarSenha = isset($senha)? ", senha ='$senhacrip' ":'';
+	$sql = "UPDATE cadusuario SET nomeCompleto = '$nomeCompleto', email='$email', niveisacesso = '$niveisacesso' $alterarSenha
+		where Idusuario = $id ";
+}
+else{
+	$sql = "INSERT INTO cadusuario (nomeCompleto, email, senha, niveisacesso ) 
+	VALUES ('$nomeCompleto','$email', '$senhacrip', '$niveisacesso')";
+}
 
 
 $resultado = mysqli_query($conn,$sql);
@@ -22,5 +29,5 @@ if($resultado){
 }else{
 	echo "Erro no cadastro do Usuario!";
 }
-
+echo "<meta http-equiv=refresh content='2;URL=lista_membro.php'>";
  ?>

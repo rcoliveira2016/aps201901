@@ -1,6 +1,16 @@
 ﻿<?php 
-  require_once('../permissoes.php');
-  verficar_permissao($_permissaoUsuario);
+	require_once('../permissoes.php');
+  	verficar_permissao($_permissaoUsuario);
+
+	require '../conexao.php';
+
+	$conexao = conexao::getInstance();
+	$sql = 'SELECT * FROM cadusuario WHERE Idusuario = :Idusuario';
+	$stm = $conexao->prepare($sql);
+	$stm->bindValue(':Idusuario', $_GET['id']);
+	$stm->execute();
+	$usuario = $stm->fetch(PDO::FETCH_OBJ);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,19 +33,19 @@
 
 			    <div class="form-group col-md-6">
 			      <label for="Nome Do Usuario">Nome Do Usuario:</label>
-			      <input type="text" class="form-control" required id="nomeCompleto" name="nomeCompleto">
+			      <input type="text" required class="form-control" id="nomeCompleto" name="nomeCompleto" value="<?=$usuario->nomeCompleto?>">
 			    </div>
 			    <div class="form-group col-md-6">
 					<label for="email">E-mail:</label>
-				    <input type="Text" class="form-control" required id="email" name ="email">
+				    <input type="Text" required class="form-control" id="email" name ="email" value="<?=$usuario->nomeCompleto?>">
 				</div>
 				<div class="form-group col-md-6">
 					<label for="senha">Senha:</label>
-				    <input type="password" class="form-control" required id="senha" name ="senha">
+				    <input type="password" class="form-control" id="senha" name ="senha">
 				</div>
 				  <div class="form-group col-md-6">
 			      <label for="status">Nivel de Acesso</label>
-			      <select required class="form-control" name="niveisacesso" id="niveisacesso">
+			      <select class="form-control" required name="niveisacesso" id="niveisacesso">
 				    <option value="">Selecione o Nivel de Acesso</option>
 				    <option value="Doze">Doze</option>
 				    <option value="Lider">Lider</option>
@@ -44,7 +54,7 @@
 				  <span class='msg-erro msg-grupo'></span>
 			    </div>
 				<div class="form-group col-md-12">
-			    	<!-- <input type="hidden" name="acao" value="incluir"> -->
+			    	<input type="hidden" name="id" value="<?=$usuario->Idusuario?>">
 			    	<button type="submit" class="btn btn-primary" id='botao'> 
 			      		Gravar
 			   		</button>
@@ -57,5 +67,15 @@
 	<script src="../lib/owl.carousel/owl-carousel/owl.carousel.min.js"></script>
 	<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../js/efeitos.js"></script>
+	<script>
+		$(document).ready(function() {
+			var _carregar = function () {
+				var valorNiveisacesso = <?="'$usuario->niveisacesso'"?>;
+
+				$('#niveisacesso').val(valorNiveisacesso);
+			};
+			_carregar();
+		});
+	</script>
 </body>
 </html>

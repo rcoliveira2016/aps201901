@@ -47,7 +47,7 @@ endif;
 					
 				<div class="form-group col-md-6">
 			      <label for="Nome Do Discípulo">Nome Do Discípulo:</label>
-			      <input type="text" class="form-control" id="nome" name="nome" value="<?=$discipulo->nome?>">
+			      <input type="text" class="form-control" id="nome" name="nome" required value="<?=$discipulo->nome?>">
 			      <span class='msg-erro msg-nome'></span>
 			    </div>
 
@@ -65,19 +65,19 @@ endif;
 
 			    <div class="form-group col-md-3">
 				      <label for="data_nascimento">Data de Nascimento</label>
-				      <input type="date" class="form-control" id="data" maxlength="10" value="<?=$discipulo->data?>" name="data">
+				      <input type="date" class="form-control" id="data" maxlength="10" required value="<?=$discipulo->data?>" name="data">
 				      <span class='msg-erro msg-data'></span>
 				</div>
 
 				<div class="form-group col-md-6">
 					<label for="Endereço">Endereço:</label>
-				    <input type="Text" class="form-control" id="endereco" name="endereco" value="<?=$discipulo->endereco?>">
+				    <input type="Text" class="form-control" id="endereco" name="endereco" required value="<?=$discipulo->endereco?>">
 				    <span class='msg-erro msg-endereco'></span>
 				</div>
 
 				<div class="form-group col-md-3">
 					<label for="Numero">Numero:</label>
-				    <input type="number" class="form-control" id="numero" name ="numero" value="<?=$discipulo->numero?>">
+				    <input type="number" class="form-control" id="numero" name="numero" required value="<?=$discipulo->numero?>">
 				    <span class='msg-erro msg-numero'></span>
 				</div>
 
@@ -106,12 +106,12 @@ endif;
 				</div>
 				<div class="form-group col-md-4">
 					<label for="Fone Celular">Fone Celular:</label>
-				    <input type="Text" class="form-control" id="celular" name ="celular" value="<?=$discipulo->celular?>">
+				    <input type="Text" class="form-control" id="celular" name ="celular" required value="<?=$discipulo->celular?>">
 				    <span class='msg-erro msg-celular'></span>
 				</div>
 				<div class="form-group col-md-4">
 				    <label for="Estado Civil">Estado Civil:</label>
-				    <input type="Text" class="form-control" id="estadocivil" name ="estadocivil" value="<?=$discipulo->estadocivil?>">
+				    <input type="Text" class="form-control" id="estadocivil" name="estadocivil" required value="<?=$discipulo->estadocivil?>">
 				    <span class='msg-erro msg-estadocivil'></span>
 				</div>
 				<div class="form-group col-md-6">
@@ -131,7 +131,7 @@ endif;
 				</div>
 			    <div class="form-group col-md-4">
 			      <label for="email">E-mail</label>
-			      <input type="email" class="form-control" id="email" name="email" value="<?=$discipulo->email?>">
+			      <input type="email" class="form-control" id="email" name="email" required value="<?=$discipulo->email?>">
 			      <span class='msg-erro msg-email'></span>
 			    </div>
 			    <div class="form-group col-md-4">
@@ -141,27 +141,40 @@ endif;
 				</div>
 				<div class="form-group col-md-4">
 					<label for="codlider">Macro:</label>
-						<input type="Text" class="form-control" disabled="true" value="<?=$discipulo->idmacro?>">
-			      		<span class='msg-erro msg-email'></span>
+					<select class="form-control" required name="idmacro" id="idmacro">
+						<?php
+							echo '<option value="">'. "Selecione a Macro" .'</option>';
+							$resultado = mysqli_query($conn,"SELECT idmacro,nome_macro FROM cadmacro ORDER BY nome_macro ASC");
+
+							if (! $resultado){
+								echo  mysql_error($resultado);
+							} else {
+								while ($row = mysqli_fetch_assoc($resultado)) {
+									
+									echo '<option value="'.$row["idmacro"].'">'. $row["nome_macro"] .'</option>';
+								}
+							}
+						?>
+				  	</select>
 				</div>
 			    <div class="form-group col-md-4">
 			      <label for="status">Status</label>
-			      <select class="form-control" name="status" id="status">
-					    <option value="<?=$discipulo->status?>"><?=$discipulo->status?></option>
+			      <select class="form-control" required name="status" id="status">
+				  		<option value="">Selecione</option>
 					    <option value="Ativo">Ativo</option>
 					    <option value="Inativo">Inativo</option>
-					  </select>
+					</select>
 				  <span class='msg-erro msg-status'></span>
 			    </div>
 
 			    <div class="form-group col-md-4">
 			      <label for="status">Grupo de Investimento</label>
-			      <select class="form-control" name="grupo" id="grupo">
+			      <select class="form-control" name="grupo" required id="grupo">
 				    <option value="">Selecione</option>
 				    <option value="abordado">Abordado</option>
 				    <option value="simpatizante">Simpatizante</option>
 				    <option value="comprometido">Comprometido</option>
-					<option value="lider">lider</option>
+					<option value="lider">Lider</option>
 				  </select>
 				  <span class='msg-erro msg-grupo'></span>
 			    </div>
@@ -187,11 +200,16 @@ endif;
 			var _carregar = function () {
 				var valorGrupo = <?="'$discipulo->grupo'"?>;
 				var valorLider = <?=empty($discipulo->lider)?"-1":$discipulo->lider?>;
+				var valorIdmacro = <?=empty($discipulo->idmacro)?"''":$discipulo->idmacro?>;
+				var valorStatus = <?=empty($discipulo->status)?"''":"'$discipulo->status'"?>;
+
 				console.log(<?=$discipulo->lider?>)
 				_carregarSelectLideres();
 
 				$('#lider').val(valorLider);
 				$('#grupo').val(valorGrupo);
+				$('#idmacro').val(valorIdmacro);
+				$('#status').val(valorStatus);
 			};
 			
 			var _carregarSelectLideres = function () {
