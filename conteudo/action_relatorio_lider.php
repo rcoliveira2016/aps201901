@@ -22,14 +22,17 @@ require '../conexao.php';
                 
     if(!empty($_POST['lider'])){
         if(empty($filtros)) $filtros.=" where ";
+        else $filtros.=" and ";
         $filtros.=" cadmembro.lider = :lider ";
     }
     if(!empty($_POST['data'])){
         if(empty($filtros)) $filtros.=" where ";
+        else $filtros.=" and ";
         $filtros.=" cadcelulograma.datapresenca=:data ";
     }
     if(!empty($_POST['presenca'])){
         if(empty($filtros)) $filtros.=" where ";
+        else $filtros.=" and ";
         $filtros.=" cadcelulograma.presenca =:presenca ";
     }
     $sql.=$filtros;
