@@ -45,6 +45,14 @@
 							<label>Data</label>
 							<input type="date" class="form-control" id="data" maxlength="10" name="data">
 						</div>
+						<div class="form-group">
+							<label>Presença</label>
+							<select class="form-control" name="presenca" id="presenca">
+								<option value="">Selecione</option>
+								<option value="p">P</option>
+								<option value="f">F</option>
+							</select>
+						</div>
 						<button type="submit" class="btn btn-primary pesquisar">Pesquisar</button>
 					</div>
 				</div>
@@ -57,6 +65,7 @@
 						<thead>
 							<tr class='active'>
 								<th>Nome</th>							
+								<th>lider</th>							
 								<th>Data</th>
 								<th>Presença</th>							
 							</tr>
@@ -79,35 +88,40 @@
             var _urlPesquisa = 'action_relatorio_lider.php';
 			var _carregar = function () {
                 _carregarSelectLideres();
-                _carregarBtnPesquisa();                
+                _carregarBtnPesquisa();
+				_carregarDadosAjax();                
 			};
             
             var _carregarBtnPesquisa = function () {
                 $('.pesquisar').on('click', function () {
-                    
-                    $.ajax({
-						type: 'POST',
-						url: _urlPesquisa,
-						data: {data:$('#data').val(), lider:$('#lider').val()},
-						async: true,
-						cache: false,
-						success: function (data) {
-                            data = JSON.parse(data);
-                            $('#tabela-lider tbody').empty();
-                            data.forEach(function (celulograma) {
-                                var tr =  $('<tr>');
-                                tr.append($('<td>').html(celulograma.nome));
-                                tr.append($('<td>').html(celulograma.data));
-                                tr.append($('<td>').html(celulograma.presenca));
-                                $('#tabela-lider tbody').append(tr)
-                            })
-						},
-						error: function (data) {
-							alert('erro '+ data)
-						},
-					});
+                    _carregarDadosAjax();                    
                 })
             }
+
+			var _carregarDadosAjax = function () {
+				$.ajax({
+					type: 'POST',
+					url: _urlPesquisa,
+					data: {data:$('#data').val(), lider:$('#lider').val(), presenca: $('#presenca').val()},
+					async: true,
+					cache: false,
+					success: function (data) {
+						data = JSON.parse(data);
+						$('#tabela-lider tbody').empty();
+						data.forEach(function (celulograma) {
+							var tr =  $('<tr>');
+							tr.append($('<td>').html(celulograma.nome));
+							tr.append($('<td>').html(celulograma.nomelider));
+							tr.append($('<td>').html(celulograma.data));
+							tr.append($('<td>').html(celulograma.presenca));
+							$('#tabela-lider tbody').append(tr)
+						})
+					},
+					error: function (data) {
+						alert('erro '+ data)
+					},
+				});
+			}
 
 			var _carregarSelectLideres = function () {
 				$('#lider').append($('<option>', { value: '', text: 'Selecione um lider' }));

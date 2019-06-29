@@ -44,45 +44,50 @@ endif;
 			<legend><h1>Listagem de Discípulos</h1></legend>
 
 			<!-- Formulário de Pesquisa -->
-			<form action="" method="get" id='form-contato' class="form-horizontal col-md-10">
-				<label class="col-md-2 control-label" for="termo">Pesquisar</label>
-				<div class='col-md-7'>
-			    	<input type="text" class="form-control" id="termo" name="termo" placeholder="Infome o Nome ou E-mail">
-				</div>
-			    <button type="submit" class="btn btn-primary">Pesquisar</button>
-			    <a href='lista_membro.php' class="btn btn-primary">Ver Todos</a>
-			</form>
-
-			<!-- Link para página de cadastro -->
-			<a href='cadastro_discipulo.php' class="btn btn-success pull-right">Cadastrar Discípulo</a>
-			<div class='clearfix'></div>
+			<div class="row">
+				<form action="" method="get" id='form-contato' class="form-horizontal">
+					<div class="col-lg-1 col-md-2 col-sm-2">
+						<a href='cadastro_discipulo.php' class="btn btn-success">Cadastrar</a>
+					</div>
+					<label class="col-lg-1 col-md-1 col-sm-1 ccontrol-label" for="termo">Pesquisar</label>
+					<div class='col-lg-6 col-md-5 col-sm-5'>
+						<input type="text" class="form-control" id="termo" name="termo" placeholder="Infome o Nome ou E-mail">
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<button type="submit" class="btn btn-primary">Pesquisar</button>
+						<a href='lista_membro.php' class="btn btn-primary">Ver Todos</a>
+					</div>
+				</form>
+			</div>
 
 			<?php if(!empty($discipulos)):?>
-
-				<!-- Tabela de Discípulos -->
-				<table class="table table-striped">
-					<tr class='active'>
-						
-						<th>Nome</th>
-						<th>E-mail</th>
-						<th>Celular</th>
-						<th>Status</th>
-						<th>Ação</th>
-					</tr>
-					<?php foreach($discipulos as $discipulo):?>
-						<tr>
-							
-							<td><?=$discipulo->nome?></td>
-							<td><?=$discipulo->email?></td>
-							<td><?=$discipulo->celular?></td>
-							<td><?=$discipulo->status?></td>
-							<td>
-								<a href='editar_discipulo.php?id=<?=$discipulo->idmembro?>' class="btn btn-primary">Editar</a>
-							</td>
-						</tr>	
-					<?php endforeach;?>
-				</table>
-
+				<div class="row  m-t-lg">
+					<div class="col-md-12">
+						<!-- Tabela de Discípulos -->
+						<table class="table table-striped">
+							<tr class='active'>
+								
+								<th>Nome</th>
+								<th>E-mail</th>
+								<th>Celular</th>
+								<th>Status</th>
+								<th>Ação</th>
+							</tr>
+							<?php foreach($discipulos as $discipulo):?>
+								<tr>
+									
+									<td><?=$discipulo->nome?></td>
+									<td><?=$discipulo->email?></td>
+									<td><?=$discipulo->celular?></td>
+									<td><?=$discipulo->status?></td>
+									<td>
+										<a href='editar_discipulo.php?id=<?=$discipulo->idmembro?>' class="btn btn-primary">Editar</a>
+									</td>
+								</tr>	
+							<?php endforeach;?>
+						</table>
+					</div>
+				</div>
 			<?php else: ?>
 
 				<!-- Mensagem caso não exista Discipulos ou não encontrado  -->

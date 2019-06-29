@@ -29,5 +29,5 @@ if($resultado){
 }else{
 	echo "Erro no cadastro do Usuario!";
 }
-echo "<meta http-equiv=refresh content='2;URL=lista_membro.php'>";
+echo "<meta http-equiv=refresh content='2;URL=lista_usuario.php'>";
  ?>

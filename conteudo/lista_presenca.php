@@ -54,7 +54,7 @@ endif;
 			<div class="row">
 				<form action="" method="get" id='form-contato-listagem' class="form-horizontal">
 					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-2 control-label">Pesquisar</label>
+						<label class="col-sm-1 control-label">Pesquisar</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="termo" name="termo" value="<?=$termo?>" placeholder="Infome o Nome">
 						</div>

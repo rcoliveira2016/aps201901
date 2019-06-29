@@ -37,7 +37,7 @@
 			    </div>
 			    <div class="form-group col-md-6">
 					<label for="email">E-mail:</label>
-				    <input type="Text" required class="form-control" id="email" name ="email" value="<?=$usuario->nomeCompleto?>">
+				    <input type="Text" required class="form-control" id="email" name ="email" value="<?=$usuario->email?>">
 				</div>
 				<div class="form-group col-md-6">
 					<label for="senha">Senha:</label>

@@ -47,18 +47,22 @@ endif;
 			<!-- Cabeçalho da Listagem -->
 			<legend><h1>Listagem de Macro</h1></legend>
 
-			<!-- Formulário de Pesquisa -->
-			<form action="" method="get" id='form-contato' class="form-horizontal col-md-10">
-				<label class="col-md-2 control-label" for="termo">Pesquisar</label>
-				<div class='col-md-7'>
-			    	<input type="text" class="form-control" id="termo" name="termo" placeholder="Infome o Nome">
-				</div>
-			    <button type="submit" class="btn btn-primary">Pesquisar</button>
-			    <a href='lista_macro.php' class="btn btn-primary">Ver Todos</a>
-			</form>
-
-			<!-- Link para página de cadastro -->
-			<a href='cadastro_macro.php' class="btn btn-success pull-right">Cadastrar Macro</a>
+			<div class="row">
+				<!-- Formulário de Pesquisa -->
+				<form action="" method="get" id='form-contato' class="form-horizontal">					
+					<div class="col-lg-1 col-md-2 col-sm-2">
+						<a href='cadastro_macro.php' class="btn btn-success">Cadastrar</a>
+					</div>
+					<label class="col-lg-1 col-md-1 col-sm-1 ccontrol-label" for="termo">Pesquisar</label>
+					<div class='col-lg-6 col-md-5 col-sm-5'>
+						<input type="text" class="form-control" id="termo" name="termo" placeholder="Infome o Nome">
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<button type="submit" class="btn btn-primary">Pesquisar</button>
+						<a href='lista_macro.php' class="btn btn-primary">Ver Todos</a>
+					</div>
+				</form>
+			</div>
 			<div class='clearfix'></div>
 
 			<?php if(!empty($macros)):?>
