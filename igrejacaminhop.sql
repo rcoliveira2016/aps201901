@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 29-Jun-2019 às 05:40
+-- Generation Time: 29-Jun-2019 às 05:53
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -131,7 +131,7 @@ CREATE TABLE `cadusuario` (
 --
 
 INSERT INTO `cadusuario` (`Idusuario`, `nomeCompleto`, `email`, `senha`, `niveisacesso`, `DataCadastro`, `DataAlteracao`) VALUES
-(1, 'Administrador', 'admin@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e', 'Lider', '2019-02-05 00:50:17', '0000-00-00 00:00:00'),
+(1, 'Administrador', 'admin@gmail.com', '202cb962ac59075b964b07152d234b70', 'Doze', '2019-02-05 00:50:17', '0000-00-00 00:00:00'),
 (4, 'teste lider', 'lider@gmail.com', '202cb962ac59075b964b07152d234b70', 'Lider', '2019-02-05 13:55:54', '0000-00-00 00:00:00'),
 (5, 'comprometido', 'comprometido@gmail.com', '202cb962ac59075b964b07152d234b70', 'Comprometido', '2019-02-05 16:48:10', '0000-00-00 00:00:00'),
 (6, 'Ordenir Antonio Laguna', 'ordenirlaguna@hotmail.com', 'a915b0ebdeb664dede4b8ca5faf2c871', 'Lider', '2019-02-05 22:49:13', '0000-00-00 00:00:00'),
