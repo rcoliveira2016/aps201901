@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once('../permissoes.php');
+verficar_permissao($_permissaoUsuario);
 require '../conexao.php';
 
 // Recebe o termo de pesquisa se existir
@@ -9,21 +10,21 @@ $termo = (isset($_GET['termo'])) ? $_GET['termo'] : '';
 if (empty($termo)):
 
 	$conexao = conexao::getInstance();
-	$sql = 'SELECT idmacro, nome_macro, status  FROM cadmacro' ;
+	$sql = 'SELECT IDUsuario, nomeCompleto, email, niveisacesso FROM cadusuario';
 	$stm = $conexao->prepare($sql);
 	$stm->execute();
-	$macros = $stm->fetchAll(PDO::FETCH_OBJ);
+	$discipulos = $stm->fetchAll(PDO::FETCH_OBJ);
 
 else:
 
 	// Executa uma consulta baseada no termo de pesquisa passado como parâmetro
 	$conexao = conexao::getInstance();
-	$sql = 'SELECT idmacro, nome_macro, status  FROM cadmacro WHERE nome';
+	$sql = 'SELECT IDUsuario, nomeCompleto, email, niveisacesso FROM cadusuario WHERE nomeCompleto LIKE :nomeCompleto OR email LIKE :email';
 	$stm = $conexao->prepare($sql);
 	$stm->bindValue(':nome', $termo.'%');
-	$stm->bindValue(':macro', $termo.'%');
+	$stm->bindValue(':email', $termo.'%');
 	$stm->execute();
-	$macros = $stm->fetchAll(PDO::FETCH_OBJ);
+	$discipulos = $stm->fetchAll(PDO::FETCH_OBJ);
 
 endif;
 ?>
@@ -32,50 +33,49 @@ endif;
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Listagem de Macro</title>
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/custom.css">
-    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	<title>Listagem de Usuario</title>
+	<link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/sistema.css" rel="stylesheet">
-   
 </head>
+<body>
 	<?php require_once('../templates/header.php') ?>
 	<div class='container'>
 		<fieldset>
 
 			<!-- Cabeçalho da Listagem -->
-			<legend><h1>Listagem de Macro</h1></legend>
+			<legend><h1>Listagem de Usuario</h1></legend>
 
 			<!-- Formulário de Pesquisa -->
 			<form action="" method="get" id='form-contato' class="form-horizontal col-md-10">
 				<label class="col-md-2 control-label" for="termo">Pesquisar</label>
 				<div class='col-md-7'>
-			    	<input type="text" class="form-control" id="termo" name="termo" placeholder="Infome o Nome">
+			    	<input type="text" class="form-control" id="termo" name="termo" placeholder="Infome o Nome ou E-mail">
 				</div>
 			    <button type="submit" class="btn btn-primary">Pesquisar</button>
-			    <a href='lista_macro.php' class="btn btn-primary">Ver Todos</a>
+			    <a href='lista_membro.php' class="btn btn-primary">Ver Todos</a>
 			</form>
 
 			<!-- Link para página de cadastro -->
-			<a href='cadastro_macro.php' class="btn btn-success pull-right">Cadastrar Macro</a>
+			<a href='cadastro_Usuario.php' class="btn btn-success pull-right">Cadastrar Usuario</a>
 			<div class='clearfix'></div>
 
-			<?php if(!empty($macros)):?>
+			<?php if(!empty($discipulos)):?>
 
 				<!-- Tabela de Discípulos -->
 				<table class="table table-striped">
 					<tr class='active'>
 						<th>Nome</th>
-						<th>Status</th>
+						<th>Usuario</th>
+						<th>Nivel de Acesso</th>
 						<th>Ação</th>
 					</tr>
-					<?php foreach($macros as $macro):?>
+					<?php foreach($discipulos as $discipulo):?>
 						<tr>
-							<td><?=$macro->nome_macro?></td>
-							<td><?=$macro->status?></td>
+							<td><?=$discipulo->nomeCompleto?></td>
+							<td><?=$discipulo->email?></td>
+							<td><?=$discipulo->niveisacesso?></td>
 							<td>
-								<a href='editar_macro.php?id=<?=$macro->idmacro?>' class="btn btn-primary">Editar</a>
-								
+								<a href='editar_usuario.php?id=<?=$discipulo->IDUsuario?>' class="btn btn-primary">Editar</a>
 							</td>
 						</tr>	
 					<?php endforeach;?>
@@ -84,7 +84,7 @@ endif;
 			<?php else: ?>
 
 				<!-- Mensagem caso não exista Discipulos ou não encontrado  -->
-				<h3 class="text-center text-primary">Não existem Macro cadastrados!</h3>
+				<h3 class="text-center text-primary">Não existem Usuario cadastrados!</h3>
 			<?php endif; ?>
 		</fieldset>
 	</div>
@@ -92,5 +92,6 @@ endif;
 	<script src="../lib/owl.carousel/owl-carousel/owl.carousel.min.js"></script>
 	<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../js/efeitos.js"></script>
+	<script type="text/javascript" src="../js/custom_discipulo.js"></script>	
 </body>
 </html>

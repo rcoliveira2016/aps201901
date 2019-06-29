@@ -16,19 +16,21 @@ $resultado = mysqli_fetch_assoc($resultado_usuario);
 	{
 		$_SESSION['usuarioNome'] = $resultado['Nome'];
 		$_SESSION['niveisacesso'] = $resultado['niveisacesso'];
-
-	if($_SESSION['niveisacesso'] == "Doze"){
-				header("Location: doze\administrativo.php");
-		}elseif($_SESSION['niveisacesso'] == "Lider"){
-				header("Location: lider\lider.php");
-			}else{
-				header("Location: comprometido\comprometido.php");
-			}
+		header("Location: conteudo\administrativo.php");
+		/*if($_SESSION['niveisacesso'] == "Doze"){
+			header("Location: doze\administrativo.php");
 		}
+		elseif($_SESSION['niveisacesso'] == "Lider"){
+			header("Location: lider\lider.php");
+		}
+		else{
+			header("Location: comprometido\comprometido.php");
+		}*/
+	}
 	else{	
 
-			$_SESSION['loginErro'] = "Usuário ou senha Inválido";
-			header("Location: index.php");
-		}
+		$_SESSION['loginErro'] = "Usuário ou senha Inválido";
+		header("Location: index.php");
+	}
 
  ?>

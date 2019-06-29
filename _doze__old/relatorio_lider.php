@@ -1,6 +1,7 @@
 <?php
-session_start();
-require '../conexao.php';
+	require_once('../permissoes.php');
+	verficar_permissao($_permissaoRelatorios);
+	require '../conexao.php';
 
     $conexao = conexao::getInstance();
 	$sql = 'SELECT nome,idmembro FROM cadmembro WHERE grupo = :lider';

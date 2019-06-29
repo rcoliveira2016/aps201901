@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once('../permissoes.php');
+verficar_permissao($_permissaoCadastro);
 require '../conexao.php';
 
 // Recebe o termo de pesquisa se existir

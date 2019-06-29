@@ -1,4 +1,6 @@
 ﻿<?php
+require_once('../permissoes.php');
+verficar_permissao($_permissaoCadastro);
 require '../conexao.php';
 
 // Recebe o id do discipulo do discipulo via GET

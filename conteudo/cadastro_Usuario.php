@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+  require_once('../permissoes.php');
+  verficar_permissao($_permissaoUsuario);
+?>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">

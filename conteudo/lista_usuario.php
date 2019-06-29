@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once('../permissoes.php');
+verficar_permissao($_permissaoUsuario);
 require '../conexao.php';
 
 // Recebe o termo de pesquisa se existir
@@ -33,40 +34,11 @@ endif;
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Listagem de Usuario</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/custom.css">
 	<link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link href="../css/sistema.css" rel="stylesheet">
-    <script src="../js/ie-emulation-modes-warning.js"></script>
 </head>
 <body>
-<header>
-		<nav class="navbar navbar-inverse">
-	  		<div class="container-fluid">
-		    	<ul class="nav navbar-nav">
-		    		<li><a href="administrativo.php">Home</a></li>
-			      	<li><a class="dropdown-toggle" data-toggle="dropdown">Cadastro<span class="caret"></span></a>
-					    <ul class="dropdown-menu">
-						    <li><a href="lista_membro.php">Membros</a></li>
-						    <li><a href="lista_macro.php">Macro</a></li>
-					     </ul>
-			      	</li>
-			      	<li><a href="lista_presenca.php">Celulograma</a></li>
-			      	<li><a href="#">Relatorios</a></li>
-			      	<li class="dropdown">
-				        <a class="dropdown-toggle" data-toggle="dropdown">Usuario<span class="caret"></span></a>
-					        <ul class="dropdown-menu">
-						        <li><a href="../login/lista_usuario.php">Cadastro Usuario</a></li>
-						    </ul>
-			      	</li>
-			      	<li class="dropdown">
-			        	<a href="../sair.php">Sair</a>
-			      	</li>
-		    	</ul>
-	  		</div>
-		</nav>
-	</header>
+	<?php require_once('../templates/header.php') ?>
 	<div class='container'>
 		<fieldset>
 
@@ -95,7 +67,6 @@ endif;
 						<th>Nome</th>
 						<th>Usuario</th>
 						<th>Nivel de Acesso</th>
-						<th>Status</th>
 						<th>Ação</th>
 					</tr>
 					<?php foreach($discipulos as $discipulo):?>
@@ -104,7 +75,7 @@ endif;
 							<td><?=$discipulo->email?></td>
 							<td><?=$discipulo->niveisacesso?></td>
 							<td>
-								<a href='editar_usuario.php?id=<?=$discipulo->id?>' class="btn btn-primary">Editar</a>
+								<a href='editar_usuario.php?id=<?=$discipulo->IDUsuario?>' class="btn btn-primary">Editar</a>
 							</td>
 						</tr>	
 					<?php endforeach;?>
@@ -117,6 +88,10 @@ endif;
 			<?php endif; ?>
 		</fieldset>
 	</div>
-	<script type="text/javascript" src="../js/custom_discipulo.js"></script>
+	<script src="../lib/jquery/jquery.min.js"></script>
+	<script src="../lib/owl.carousel/owl-carousel/owl.carousel.min.js"></script>
+	<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../js/efeitos.js"></script>
+	<script type="text/javascript" src="../js/custom_discipulo.js"></script>	
 </body>
 </html>

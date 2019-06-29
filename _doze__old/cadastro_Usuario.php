@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+  require_once('../permissoes.php');
+  verficar_permissao($_permissaoUsuario);
+?>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -7,32 +11,8 @@
 	<link rel="stylesheet" type="text/css" href="../css/custom.css">
 </head>
 <body>
-<header>
-		<nav class="navbar navbar-inverse">
-	  		<div class="container-fluid">
-		    	<ul class="nav navbar-nav">
-		    		<li><a href="administrativo.php">Home</a></li>
-			      	<li><a class="dropdown-toggle" data-toggle="dropdown">Cadastro<span class="caret"></span></a>
-					    <ul class="dropdown-menu">
-						    <li><a href="lista_membro.php">Membros</a></li>
-						    <li><a href="lista_macro.php">Macro</a></li>
-					     </ul>
-			      	</li>
-			      	<li><a href="lista_presenca.php">Celulograma</a></li>
-			      	<li><a href="#">Relatorios</a></li>
-			      	<li class="dropdown">
-				        <a class="dropdown-toggle" data-toggle="dropdown">Usuario<span class="caret"></span></a>
-					        <ul class="dropdown-menu">
-						        <li><a href="../login/lista_usuario.php">Cadastro Usuario</a></li>
-						    </ul>
-			      	</li>
-			      	<li class="dropdown">
-			        	<a href="../sair.php">Sair</a>
-			      	</li>
-		    	</ul>
-	  		</div>
-		</nav>
-	</header>
+<?php 
+	require_once('../templates/header.php') ?>
 	<div class='container'>
 		<fieldset>
 			<legend><h1>Formulário - Cadastro de Usuario</h1></legend>
@@ -72,6 +52,9 @@
 			</form>
 		</fieldset>
 	</div>
-	<!-- <script type="text/javascript" src="../js/custom_discipulo.js"></script> -->
+	<script src="../lib/jquery/jquery.min.js"></script>
+	<script src="../lib/owl.carousel/owl-carousel/owl.carousel.min.js"></script>
+	<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../js/efeitos.js"></script>
 </body>
 </html>
