@@ -19,10 +19,9 @@ else:
 
 	// Executa uma consulta baseada no termo de pesquisa passado como parâmetro
 	$conexao = conexao::getInstance();
-	$sql = 'SELECT idmacro, nome_macro, status  FROM cadmacro WHERE nome';
+	$sql = "SELECT idmacro, nome_macro, status  FROM cadmacro WHERE nome_macro like :nome";
 	$stm = $conexao->prepare($sql);
-	$stm->bindValue(':nome', $termo.'%');
-	$stm->bindValue(':macro', $termo.'%');
+	$stm->bindValue(':nome', '%'.$termo.'%');
 	$stm->execute();
 	$macros = $stm->fetchAll(PDO::FETCH_OBJ);
 

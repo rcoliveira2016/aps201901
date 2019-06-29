@@ -33,15 +33,15 @@
 					<label for="senha">Senha:</label>
 				    <input type="password" class="form-control" required id="senha" name ="senha">
 				</div>
-				  <div class="form-group col-md-6">
-			      <label for="status">Nivel de Acesso</label>
-			      <select required class="form-control" name="niveisacesso" id="niveisacesso">
-				    <option value="">Selecione o Nivel de Acesso</option>
-				    <option value="Doze">Doze</option>
-				    <option value="Lider">Lider</option>
-				    <option value="Comprometido">Comprometido</option>
-				  </select>
-				  <span class='msg-erro msg-grupo'></span>
+				<div class="form-group col-md-6">
+					<label for="status">Nivel de Acesso</label>
+					<select required class="form-control" name="niveisacesso" id="niveisacesso">
+						<option value="">Selecione o Nivel de Acesso</option>
+						<option value="Doze">Doze</option>
+						<option value="Lider">Lider</option>
+						<option value="Comprometido">Comprometido</option>
+					</select>
+					<span class='msg-erro msg-grupo'></span>
 			    </div>
 				<div class="form-group col-md-12">
 			    	<!-- <input type="hidden" name="acao" value="incluir"> -->

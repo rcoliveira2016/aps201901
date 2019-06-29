@@ -41,24 +41,28 @@ endif;
 			<?php else: ?>
 				<form action="action_macro.php" method="post" id='form-contato' enctype='multipart/form-data'>
 					<div class="row">
-				             <div class="form-group col-md-6">
-							     <label for="Nome Do Macro">Nome Do Macro:</label>
-				                 <input type="Text" class="form-control" id="nome_macro"  name ="nome_macro" value="<?=$macro->nome_macro?>">
-				                  <span class='msg-erro msg-nome_macro'></span>
-				            </div>
-				 <div class="form-group col-md-6">
-			      <label for="status">Status</label>
-			      <select class="form-control" name="status" id="status">
-				    <option value="<?=$macro->status?>"><?=$macro->status?></option>
-				    <option value="Ativo">Ativo</option>
-				    <option value="Inativo">Inativo</option>
-				  </select>
-				 </div>
-
-			    <input type="hidden" name="acao" value="editar">
-			    <input type="hidden" name="idmacro" value="<?=$macro->idmacro?>">
-			    <button type="submit" class="btn btn-primary" id='botao'>Gravar</button>
-			    <a href='lista_macro.php' class="btn btn-danger">Cancelar</a>
+						<div class="form-group col-md-6">
+							<label for="Nome Do Macro">Nome Do Macro:</label>
+							<input type="Text" class="form-control" id="nome_macro" required name="nome_macro" value="<?=$macro->nome_macro?>">
+							<span class='msg-erro msg-nome_macro'></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="status">Status</label>
+							<select class="form-control" name="status" required id="status">
+								<option value="">Selecionar</option>
+								<option value="Ativo">Ativo</option>
+								<option value="Inativo">Inativo</option>
+							</select>
+						</div>						
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<input type="hidden" name="acao" value="editar">
+							<input type="hidden" name="idmacro" value="<?=$macro->idmacro?>">
+							<button type="submit" class="btn btn-primary" id='botao'>Gravar</button>
+							<a href='lista_macro.php' class="btn btn-danger">Cancelar</a>
+						</div>
+					</div>
 				</form>
 			<?php endif; ?>
 		</fieldset>
@@ -68,5 +72,15 @@ endif;
 	<script src="../lib/owl.carousel/owl-carousel/owl.carousel.min.js"></script>
 	<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../js/efeitos.js"></script>
+	<script>
+		$(document).ready(function() {
+			var _carregar = function () {
+				var valorstatus = <?="'$macro->status'"?>;
+
+				$('#status').val(valorstatus);
+			};
+			_carregar();
+		});
+	</script>
 </body>
 </html>
