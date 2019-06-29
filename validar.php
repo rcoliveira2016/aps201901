@@ -14,7 +14,7 @@ $resultado = mysqli_fetch_assoc($resultado_usuario);
 
 	if (isset($resultado)) 
 	{
-		$_SESSION['usuarioNome'] = $resultado['Nome'];
+		$_SESSION['usuarioNome'] = $resultado['nomeCompleto'];
 		$_SESSION['niveisacesso'] = $resultado['niveisacesso'];
 		header("Location: conteudo\administrativo.php");
 		/*if($_SESSION['niveisacesso'] == "Doze"){

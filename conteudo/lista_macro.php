@@ -35,7 +35,6 @@ endif;
 	<title>Listagem de Macro</title>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/custom.css">
-    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link href="../css/sistema.css" rel="stylesheet">
    
 </head>

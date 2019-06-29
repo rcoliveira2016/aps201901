@@ -37,9 +37,29 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="../sair.php">Sair</a>
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <?=$_SESSION['usuarioNome']?>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../sair.php">Sair</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
     </nav>
 </header>
+<script>
+    (function () {        
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var _urlAtual = '<?=basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING'])?>';
+            var _carregar = function () {
+                $("nav.navbar.navbar-inverse.navbar-static-top").find("li a[href='"+_urlAtual+"']")
+                    .closest('li').addClass("active")
+                    .closest('li.dropdown').addClass("active");
+            };
+            _carregar();
+        });
+    })()
+</script>

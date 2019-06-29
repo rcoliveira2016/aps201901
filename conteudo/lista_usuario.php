@@ -21,7 +21,7 @@ else:
 	$conexao = conexao::getInstance();
 	$sql = 'SELECT IDUsuario, nomeCompleto, email, niveisacesso FROM cadusuario WHERE nomeCompleto LIKE :nomeCompleto OR email LIKE :email';
 	$stm = $conexao->prepare($sql);
-	$stm->bindValue(':nome', $termo.'%');
+	$stm->bindValue(':nomeCompleto', $termo.'%');
 	$stm->bindValue(':email', $termo.'%');
 	$stm->execute();
 	$discipulos = $stm->fetchAll(PDO::FETCH_OBJ);
