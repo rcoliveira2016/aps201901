@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 29-Jun-2019 às 04:16
+-- Generation Time: 29-Jun-2019 às 05:40
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -35,6 +35,18 @@ CREATE TABLE `cadcelulograma` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `cadcelulograma`
+--
+
+INSERT INTO `cadcelulograma` (`idmembro`, `presenca`, `datapresenca`, `id`) VALUES
+(1, 'p', '2019-06-28', 15),
+(3, 'f', '2019-06-28', 16),
+(4, 'p', '2019-06-28', 17),
+(1, 'p', '2019-06-29', 18),
+(4, 'f', '2019-06-29', 19),
+(4, 'p', '2019-06-29', 20);
+
 -- --------------------------------------------------------
 
 --
@@ -54,7 +66,9 @@ CREATE TABLE `cadmacro` (
 --
 
 INSERT INTO `cadmacro` (`idmacro`, `nome_macro`, `status`, `DataCadastro`, `DataAlteracao`) VALUES
-(1, 'ola', 'Ativo', '2019-06-26 23:06:30', '0000-00-00 00:00:00');
+(1, 'ola', 'Ativo', '2019-06-26 23:06:30', '0000-00-00 00:00:00'),
+(2, '123123123', 'Ativo', '2019-06-29 03:29:00', '0000-00-00 00:00:00'),
+(3, 'ola12312', 'Ativo', '2019-06-29 03:34:54', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -91,10 +105,10 @@ CREATE TABLE `cadmembro` (
 --
 
 INSERT INTO `cadmembro` (`nome`, `rg`, `cpf`, `data`, `endereco`, `numero`, `complemento`, `bairro`, `cep`, `telefone`, `celular`, `estadocivil`, `naturalidade`, `grauinstrucao`, `profissao`, `email`, `idmacro`, `grupo`, `status`, `idmembro`, `lider`) VALUES
-('Joel Selau da Silva', '0000000000', '00000000000', '1982-12-11', 'Claudino Antonio Fri', 641, 'prox. igreja santa lucia ', 'SANTA CATARINA', '95030200', '5430255338', '54981269409', 'RIO GRANDE DO SUL', 'caxias do sul', 'superior incompleto ', 'EMPR', 'joel@softautomacao.com', 1, 'simpatizante', 'Ativo', 1, NULL),
+('Joel Selau da Silva', '0000000000', '00000000000', '1982-12-11', 'Claudino Antonio Fri', 641, 'prox. igreja santa lucia ', 'SANTA CATARINA', '95030200', '5430255338', '54981269409', 'RIO GRANDE DO SUL', 'caxias do sul', 'superior incompleto ', 'EMPR', 'joel@softautomacao.com', 1, 'simpatizante', 'Ativo', 1, 3),
 ('Juliano ', '7079619131', '80338895000', '1980-05-25', 'Rua Mário de Andrade', 58, '', 'Mariland', '95057-470', '54999452595', '5498789451', 'Rio Grande do Sul', 'nova Roma do sul', 'Completo', 'Vendedor', 'juliano.scapin@hotmail.com', 1, 'lider', 'Ativo', 2, NULL),
 ('Juliano Scapin', '', '', '2019-06-11', 'Rua Mário de Andrade', 0, '', '', '95057-470', '54999452595', '5498789451', 'Rio Grande do Sul', 'nova Roma do sul', '', '', 'juliano.scapin@hotmail.com', 1, 'lider', 'Ativo', 3, NULL),
-('Fernando ferrari111', '11111111111111', '111111', '2019-06-01', '252', 2222, '111', '111', '95088630', '111', '54987349488', 'RS', 'Caxias do Sul', '111122', '111', 'roramon7@gmail.com', 1, 'abordado', 'Ativo', 4, NULL);
+('Fernando ferrari111', '11111111111111', '111111', '2019-06-01', '252', 2222, '111', '111', '95088630', '111', '54987349488', 'RS', 'Caxias do Sul', '111122', '111', 'roramon7@gmail.com', 1, 'abordado', 'Ativo', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -117,7 +131,7 @@ CREATE TABLE `cadusuario` (
 --
 
 INSERT INTO `cadusuario` (`Idusuario`, `nomeCompleto`, `email`, `senha`, `niveisacesso`, `DataCadastro`, `DataAlteracao`) VALUES
-(1, 'Administrador 777', 'Administrador 777', 'd41d8cd98f00b204e9800998ecf8427e', 'Doze', '2019-02-05 00:50:17', '0000-00-00 00:00:00'),
+(1, 'Administrador', 'admin@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e', 'Lider', '2019-02-05 00:50:17', '0000-00-00 00:00:00'),
 (4, 'teste lider', 'lider@gmail.com', '202cb962ac59075b964b07152d234b70', 'Lider', '2019-02-05 13:55:54', '0000-00-00 00:00:00'),
 (5, 'comprometido', 'comprometido@gmail.com', '202cb962ac59075b964b07152d234b70', 'Comprometido', '2019-02-05 16:48:10', '0000-00-00 00:00:00'),
 (6, 'Ordenir Antonio Laguna', 'ordenirlaguna@hotmail.com', 'a915b0ebdeb664dede4b8ca5faf2c871', 'Lider', '2019-02-05 22:49:13', '0000-00-00 00:00:00'),
@@ -139,7 +153,8 @@ INSERT INTO `cadusuario` (`Idusuario`, `nomeCompleto`, `email`, `senha`, `niveis
 (22, 'Claudia Selau', 'Claudia@softautomacao.com', '6de0c44a2eed0ac628d35448f9c5d11e', 'Lider', '2019-02-06 15:32:42', '0000-00-00 00:00:00'),
 (23, 'Ana Paula Turatti Tonial', 'paulaturatti@hotmail.com', '5b11872db61efb938f6ae970d1da7855', 'Lider', '2019-02-13 13:15:19', '0000-00-00 00:00:00'),
 (24, 'Tatiana Rodrigues', 'tatina_rodrigues@hotmail.com', 'fe0b6c28818d72e4e7842c540084c4e0', 'Lider', '2019-02-13 18:40:35', '0000-00-00 00:00:00'),
-(25, 'RAMON CARDOSO DE OLIVEIRA', 'roramon7@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e', 'Doze', '2019-06-29 02:14:40', '0000-00-00 00:00:00');
+(25, 'RAMON CARDOSO DE OLIVEIRA', 'roramon7@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e', 'Doze', '2019-06-29 02:14:40', '0000-00-00 00:00:00'),
+(26, 'RAMON CARDOSO DE OLIVEIRA', 'roramon7@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 'Doze', '2019-06-29 03:25:53', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -181,13 +196,13 @@ ALTER TABLE `cadusuario`
 -- AUTO_INCREMENT for table `cadcelulograma`
 --
 ALTER TABLE `cadcelulograma`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `cadmacro`
 --
 ALTER TABLE `cadmacro`
-  MODIFY `idmacro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idmacro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `cadmembro`
@@ -199,7 +214,7 @@ ALTER TABLE `cadmembro`
 -- AUTO_INCREMENT for table `cadusuario`
 --
 ALTER TABLE `cadusuario`
-  MODIFY `Idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `Idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Constraints for dumped tables
